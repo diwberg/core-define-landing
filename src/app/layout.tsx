@@ -20,6 +20,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Amandha - Core Define" }],
   creator: "Amandha",
   publisher: "Core Define",
+  metadataBase: new URL('https://coredefine.com.br'),
   openGraph: {
     title: "Core Define 3.0 - Transforme seu Core em 21 Dias",
     description: "Método revolucionário para mães que querem transformar o corpo em casa, com apenas 10 minutos por dia. Mais de 5.000 mães já transformaram suas vidas!",
