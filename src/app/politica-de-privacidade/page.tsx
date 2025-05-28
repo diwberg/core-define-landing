@@ -201,7 +201,7 @@ export default function PoliticaDePrivacidade() {
                 
                 <p className="bg-green-50 p-4 rounded-lg text-sm">
                   <strong>Como exercer seus direitos:</strong> Entre em contato conosco através do 
-                  e-mail contato@coredefine.com.br ou WhatsApp (11) 99999-9999.
+                  e-mail contato@cuidandodemim.org ou WhatsApp (99) 98260-2003.
                 </p>
               </div>
             </section>
@@ -254,10 +254,10 @@ export default function PoliticaDePrivacidade() {
               <div className="text-gray-700 leading-relaxed space-y-4">
                 <p>Para questões sobre privacidade e proteção de dados:</p>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p><strong>E-mail:</strong> privacidade@coredefine.com.br</p>
-                  <p><strong>WhatsApp:</strong> (11) 99999-9999</p>
+                  <p><strong>E-mail:</strong> privacidade@cuidandodemim.org</p>
+                  <p><strong>WhatsApp:</strong> (99) 98260-2003</p>
                   <p><strong>Horário:</strong> Segunda a sexta, 9h às 18h</p>
-                  <p><strong>Encarregado de Dados (DPO):</strong> Amandha Silva</p>
+                  <p><strong>Encarregado de Dados (DPO):</strong> Amandha Andrade</p>
                 </div>
               </div>
             </section>

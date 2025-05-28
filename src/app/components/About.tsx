@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Award, Users, Heart, Target } from 'lucide-react'
+import Image from 'next/image'
 
 export default function About() {
   return (
@@ -18,16 +19,27 @@ export default function About() {
               className="relative"
             >
               <div className="relative">
-                <div className="w-full h-96 lg:h-[500px] bg-gradient-to-br from-pink-100 to-purple-100 rounded-2xl overflow-hidden shadow-2xl">
-                  {/* Placeholder for professional photo */}
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-pink-200 to-purple-200">
-                    <div className="text-center">
-                      <div className="w-32 h-32 bg-white rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg">
-                        <span className="text-4xl font-bold text-pink-600">A</span>
-                      </div>
-                      <p className="text-gray-600 font-medium">Foto Profissional da Amandha</p>
-                    </div>
-                  </div>
+                <div className="w-full h-96 lg:h-[500px] bg-gradient-to-br from-pink-100 to-purple-100 rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center">
+                  <motion.div
+                    animate={{ 
+                      y: [0, -10, 0],
+                    }}
+                    transition={{ 
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                    className="relative"
+                  >
+                    <Image
+                      src="/photo.png"
+                      alt="Amandha - Especialista em Core e Fortalecimento"
+                      width={450}
+                      height={450}
+                      className="object-contain"
+                      priority
+                    />
+                  </motion.div>
                 </div>
                 
                 {/* Floating elements */}
@@ -90,7 +102,7 @@ export default function About() {
                 className="space-y-4 text-gray-700 leading-relaxed"
               >
                 <p className="text-lg">
-                  <strong>Mãe, educadora física e especialista em transformação corporal</strong>, 
+                  <strong>Mãe, fisioterapeuta e especialista em transformação corporal</strong>, 
                   Amandha dedicou sua carreira a ajudar milhares de mulheres a reconquistarem 
                   sua autoestima e confiança através de um método revolucionário.
                 </p>
@@ -98,7 +110,7 @@ export default function About() {
                 <p className="text-lg">
                   Após sua própria jornada de transformação pós-maternidade, ela desenvolveu 
                   o Core Define - um sistema que já impactou positivamente a vida de mais de 
-                  <strong className="text-pink-600"> 5.000 mães</strong> em todo o Brasil.
+                  <strong className="text-pink-600"> 1.000 mulheres</strong> em todo o Brasil e Europa.
                 </p>
                 
                 <p className="text-lg">
@@ -120,15 +132,15 @@ export default function About() {
                   <div className="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-2">
                     <Users className="w-6 h-6 text-pink-600" />
                   </div>
-                  <div className="text-2xl font-bold text-gray-900">+5.000</div>
-                  <div className="text-sm text-gray-600">Mães Transformadas</div>
+                  <div className="text-2xl font-bold text-gray-900">+1.000</div>
+                  <div className="text-sm text-gray-600">Mulheres Transformadas</div>
                 </div>
                 
                 <div className="text-center">
                   <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2">
                     <Award className="w-6 h-6 text-purple-600" />
                   </div>
-                  <div className="text-2xl font-bold text-gray-900">8+</div>
+                  <div className="text-2xl font-bold text-gray-900">6+</div>
                   <div className="text-sm text-gray-600">Anos de Experiência</div>
                 </div>
                 
@@ -151,10 +163,10 @@ export default function About() {
               >
                 <h4 className="font-semibold text-gray-900 mb-3">Formação & Certificações:</h4>
                 <ul className="space-y-2 text-gray-600">
-                  <li>• Educação Física - Universidade Federal</li>
-                  <li>• Especialização em Treinamento Funcional</li>
+                  <li>• Fisioterapia - Faculdade Estácio - GO</li>
+                  <li>• Especialização em Tecnica Hipopressiva</li>
                   <li>• Certificação Internacional em Core Training</li>
-                  <li>• Pós-graduação em Atividade Física Pós-Parto</li>
+                  <li>• Especialização em reestruturação abdominal, Pré e Pós-Parto</li>
                 </ul>
               </motion.div>
             </motion.div>

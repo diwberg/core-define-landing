@@ -180,7 +180,7 @@ export default function Footer() {
             <div className="flex items-center gap-2 text-gray-400 text-sm">
               <span>Feito com</span>
               <Heart className="w-4 h-4 text-pink-400 fill-current" />
-              <span>para mães incríveis</span>
+              <span>para mulheres incríveis</span>
             </div>
           </div>
           

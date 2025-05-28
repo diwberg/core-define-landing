@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { ArrowDown, Star } from 'lucide-react'
-import Image from 'next/image'
 
 interface HeroProps {
   onCtaClick: () => void
@@ -16,7 +15,7 @@ export default function Hero({ onCtaClick }: HeroProps) {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-50 via-white to-purple-50 overflow-hidden">
+    <section className="py-5 relative min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-50 via-white to-purple-50 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
       
@@ -28,7 +27,7 @@ export default function Hero({ onCtaClick }: HeroProps) {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center lg:text-left order-2 lg:order-1"
+            className="text-center lg:text-left order-1 lg:order-1"
           >
             {/* Badge */}
             <motion.div
@@ -89,12 +88,12 @@ export default function Hero({ onCtaClick }: HeroProps) {
               <Button
                 onClick={onCtaClick}
                 size="lg"
-                className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 w-full sm:w-auto"
               >
                 Quero o Desafio 3.0
               </Button>
               
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-500 text-center">
                 ⚡ Vagas limitadas - Início em 02/06/2025
               </p>
             </motion.div>
@@ -122,7 +121,7 @@ export default function Hero({ onCtaClick }: HeroProps) {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative order-1 lg:order-2"
+            className="relative order-2 lg:order-2"
           >
             <div className="relative flex justify-center lg:justify-end">
               {/* Main Image with animations */}

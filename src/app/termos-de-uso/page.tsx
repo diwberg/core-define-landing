@@ -66,10 +66,10 @@ export default function TermosDeUso() {
               <div className="text-gray-700 leading-relaxed space-y-4">
                 <p>
                   O Core Define 3.0 é um programa de exercícios online de 21 dias focado no 
-                  fortalecimento do core, especialmente desenvolvido para mães. O programa inclui:
+                  fortalecimento do core, especialmente desenvolvido para mulheres. O programa inclui:
                 </p>
                 <ul className="list-disc pl-6 space-y-2">
-                  <li>Vídeos de exercícios diários de aproximadamente 10 minutos</li>
+                  <li>Vídeos de exercícios diários de aproximadamente 15 minutos</li>
                   <li>Guias de nutrição e alimentação saudável</li>
                   <li>Acesso a grupo exclusivo de apoio</li>
                   <li>Materiais complementares e bônus</li>
@@ -112,7 +112,7 @@ export default function TermosDeUso() {
                 </p>
                 <p>
                   <strong>Como solicitar reembolso:</strong> Entre em contato conosco via 
-                  e-mail (contato@coredefine.com.br) ou WhatsApp dentro do prazo de garantia.
+                  e-mail (contato@cuidandodemim.org) ou WhatsApp dentro do prazo de garantia.
                 </p>
                 <p>
                   <strong>Processamento:</strong> O reembolso será processado em até 4 dias 
@@ -194,8 +194,8 @@ export default function TermosDeUso() {
               </h2>
               <div className="text-gray-700 leading-relaxed space-y-2">
                 <p>Para dúvidas sobre estes termos, entre em contato:</p>
-                <p><strong>E-mail:</strong> contato@coredefine.com.br</p>
-                <p><strong>WhatsApp:</strong> (11) 99999-9999</p>
+                <p><strong>E-mail:</strong> contato@cuidandodemim.org</p>
+                <p><strong>WhatsApp:</strong> (99) 998260-2003</p>
                 <p><strong>Horário de atendimento:</strong> Segunda a sexta, 9h às 18h</p>
               </div>
             </section>

@@ -5,10 +5,11 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Core Define 3.0 - Transforme seu Core em 21 Dias | Desafio para Mães",
-  description: "Transforme seu core em apenas 21 dias com o método revolucionário Core Define 3.0. Treinos de 10 minutos para mães ocupadas. Resultados garantidos ou seu dinheiro de volta!",
+  title: "Core Define 3.0 - Transforme seu Core em 21 Dias",
+  description: "Transforme seu core em apenas 21 dias com o método revolucionário Core Define 3.0. Treinos de 15 minutos para mulheres ocupadas. Resultados garantidos ou seu dinheiro de volta!",
   keywords: [
     "core define",
+    "exercícios para mulheres",
     "exercícios para mães",
     "fortalecimento do core",
     "treino pós-parto",
@@ -20,11 +21,11 @@ export const metadata: Metadata = {
   authors: [{ name: "Amandha - Core Define" }],
   creator: "Amandha",
   publisher: "Core Define",
-  metadataBase: new URL('https://coredefine.com.br'),
+  metadataBase: new URL('https://cuidandodemim.org'),
   openGraph: {
     title: "Core Define 3.0 - Transforme seu Core em 21 Dias",
-    description: "Método revolucionário para mães que querem transformar o corpo em casa, com apenas 10 minutos por dia. Mais de 5.000 mães já transformaram suas vidas!",
-    url: "https://coredefine.com.br",
+    description: "Método revolucionário para mulheres que querem transformar o corpo em casa, com apenas 15 minutos por dia. Mais de 1.000 mulheres já transformaram suas vidas!",
+    url: "https://cuidandodemim.org",
     siteName: "Core Define",
     images: [
       {
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Core Define 3.0 - Transforme seu Core em 21 Dias",
-    description: "Método revolucionário para mães que querem transformar o corpo em casa, com apenas 10 minutos por dia.",
+    description: "Método revolucionário para mulheres que querem transformar o corpo em casa, com apenas 15 minutos por dia.",
     images: ["/og-image.jpg"],
     creator: "@coredefine",
   },
@@ -98,7 +99,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Product",
               "name": "Core Define 3.0",
-              "description": "Programa de fortalecimento do core em 21 dias para mães",
+              "description": "Programa de fortalecimento do core em 21 dias para mulheres",
               "brand": {
                 "@type": "Brand",
                 "name": "Core Define"

@@ -3,76 +3,156 @@
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { ChevronLeft, ChevronRight, TrendingDown, Clock, Target } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 const results = [
   {
     id: 1,
-    name: "Maria Silva",
-    age: 32,
-    time: "21 dias",
+    name: "Erika",
+    age: 34,
+    time: "30 dias",
     image: "/results/result-1.jpg",
-    metrics: {
-      weight: "-5,2 kg",
-      waist: "-8 cm",
-      body_fat: "-4,1%"
-    },
-    description: "Mãe de 2 filhos, conseguiu retomar a autoestima após a gravidez"
+    description: "Mãe de 3 filhos, conseguiu retomar a autoestima após a gravidez"
   },
   {
     id: 2,
-    name: "Ana Rodrigues", 
+    name: "Lilian", 
     age: 28,
-    time: "21 dias",
+    time: "30 dias",
     image: "/results/result-2.jpg",
-    metrics: {
-      weight: "-4,8 kg",
-      waist: "-6 cm",
-      body_fat: "-3,7%"
-    },
     description: "Primeira vez fazendo exercícios, surpreendeu-se com os resultados"
   },
   {
     id: 3,
-    name: "Juliana Costa",
-    age: 35,
+    name: "Ilcelia",
+    age: 36,
     time: "21 dias", 
     image: "/results/result-3.jpg",
-    metrics: {
-      weight: "-6,1 kg",
-      waist: "-10 cm",
-      body_fat: "-5,2%"
-    },
     description: "Recuperou a confiança para usar roupas que gosta"
   },
   {
     id: 4,
-    name: "Carla Mendes",
-    age: 30,
+    name: "Laís",
+    age: 34,
     time: "21 dias",
     image: "/results/result-4.jpg",
-    metrics: {
-      weight: "-3,9 kg",
-      waist: "-7 cm",
-      body_fat: "-3,2%"
-    },
-    description: "Conseguiu definir o abdômen que sempre sonhou"
+    description: "Voltou a se exercitar depois de crises de pânico"
   },
   {
     id: 5,
-    name: "Patricia Lima",
-    age: 29,
+    name: "Laís",
+    age: 34,
     time: "21 dias",
     image: "/results/result-5.jpg",
-    metrics: {
-      weight: "-5,7 kg",
-      waist: "-9 cm",
-      body_fat: "-4,8%"
-    },
     description: "Transformou completamente sua relação com o exercício"
-  }
+  },
+  {
+    id: 5,
+    name: "Laís",
+    age: 34,
+    time: "21 dias",
+    image: "/results/result-6.jpg",
+    description: "Vive recebendo elogios do marido"
+  },
+  {
+    id: 5,
+    name: "Geovanna",
+    age: 29,
+    time: "21 dias",
+    image: "/results/result-7.jpg",
+    description: "Ela não acreditou no resultado que teve em apenas 21 dias"
+  },
+  {
+    id: 5,
+    name: "Geovanna",
+    age: 29,
+    time: "21 dias",
+    image: "/results/result-8.jpeg",
+    description: "Ela sentiu o abdômen mais forte e menos distendido"
+  },
+  {
+    id: 5,
+    name: "Andreia",
+    age: 30,
+    time: "21 dias",
+    image: "/results/result-9.jpg",
+    description: "Se sentiu muito mais disposta e com mais energia"
+  },
+  {
+    id: 5,
+    name: "Laís",
+    age: 34,
+    time: "21 dias",
+    image: "/results/result-10.jpg",
+    description: "Sentiu mais disposição, desenvolvimento corporal e mais animo"
+  },
+  {
+    id: 5,
+    name: "Andreia",
+    age: 30,
+    time: "21 dias",
+    image: "/results/result-20.jpeg",
+    description: "Sentiu o abdômen mais firme e menos distendido"
+  },
+  {
+    id: 5,
+    name: "Andreia",
+    age: 30,
+    time: "21 dias",
+    image: "/results/result-21.jpeg",
+    description: "Segunda edição do desafio e percebeu muitas melhoras posturais"
+  },
+  {
+    id: 5,
+    name: "Jady",
+    age: 33,
+    time: "21 dias",
+    image: "/results/result-22.jpeg",
+    description: "Sente mais conciencia corporal e controle do core ao fazer tarefas do dia a dia"
+  },
+  {
+    id: 5,
+    name: "Ilcelia",
+    age: 36,
+    time: "21 dias",
+    image: "/results/result-23.jpeg",
+    description: "Segundo desafio e agora se sente pronta para começar na academia"
+  },
+  {
+    id: 5,
+    name: "Jady",
+    age: 33,
+    time: "21 dias",
+    image: "/results/result-24.jpeg",
+    description: "Percebeu, pela primeira vez, como o posicionamento do abdômen e das costelas transformou a forma como ela enxerga o próprio corpo."
+  },
+  {
+    id: 5,
+    name: "Kauane",
+    age: 26,
+    time: "21 dias",
+    image: "/results/result-25.jpeg",
+    description: "Se sentiu super desafiada nos treinos, mas percebeu o quanto era capaz de evoluir mesmo com a rotina puxada e horários quebrados."
+  },
+  {
+    id: 5,
+    name: "Kauane",
+    age: 26,
+    time: "21 dias",
+    image: "/results/result-26.jpeg",
+    description: "Achou que não veria resultado por treinar à noite, diferente da maioria, mas em apenas 10 dias já começou a notar mudanças no corpo!"
+  },
+  {
+    id: 5,
+    name: "Kauane",
+    age: 26,
+    time: "21 dias",
+    image: "/results/result-27.jpeg",
+    description: "Se surpreendeu com a própria constância e disse que, mesmo achando que não conseguiria acompanhar, viu que é possível sim ter resultados"
+  },
+  
 ]
 
 interface ResultsProps {
@@ -140,21 +220,21 @@ export default function Results({ onCtaClick }: ResultsProps) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="relative"
+            className="relative px-4"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
             <ResultCard result={results[currentIndex]} />
             
             {/* Navigation */}
-            <div className="flex justify-center items-center mt-8 gap-4">
+            <div className="flex justify-center items-center mt-12 gap-4">
               <Button 
                 variant="outline" 
                 size="sm" 
                 onClick={prevResult}
-                className="w-12 h-12 rounded-full p-0"
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full p-0 flex-shrink-0"
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
               </Button>
               
               <div className="flex gap-2">
@@ -162,7 +242,7 @@ export default function Results({ onCtaClick }: ResultsProps) {
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
-                    className={`w-3 h-3 rounded-full transition-colors ${
+                    className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-colors ${
                       index === currentIndex ? 'bg-pink-600' : 'bg-gray-300'
                     }`}
                   />
@@ -173,14 +253,14 @@ export default function Results({ onCtaClick }: ResultsProps) {
                 variant="outline" 
                 size="sm" 
                 onClick={nextResult}
-                className="w-12 h-12 rounded-full p-0"
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full p-0 flex-shrink-0"
               >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
               </Button>
             </div>
 
             {/* Auto-play indicator */}
-            <div className="flex justify-center mt-4">
+            <div className="flex justify-center mt-6">
               <div className="flex items-center gap-2 text-xs text-gray-500">
                 <div className={`w-2 h-2 rounded-full ${isAutoPlaying ? 'bg-green-500' : 'bg-gray-400'}`}></div>
                 <span>{isAutoPlaying ? 'Reprodução automática' : 'Pausado'}</span>
@@ -208,36 +288,8 @@ export default function Results({ onCtaClick }: ResultsProps) {
               >
                 {results.map((result) => (
                   <div key={result.id} className="w-full flex-shrink-0">
-                    <div className="grid lg:grid-cols-3 gap-8 items-center">
-                      <div className="lg:col-span-2">
-                        <ResultCard result={result} />
-                      </div>
-                      <div className="space-y-6">
-                        <div className="text-center">
-                          <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                            Transformação Incrível!
-                          </h3>
-                          <p className="text-gray-600">
-                            {result.description}
-                          </p>
-                        </div>
-                        
-                        {/* Metrics highlight */}
-                        <div className="grid grid-cols-3 gap-4">
-                          <div className="text-center bg-white rounded-lg p-4 shadow-sm">
-                            <div className="font-bold text-pink-600 text-lg">{result.metrics.weight}</div>
-                            <div className="text-xs text-gray-600">Peso perdido</div>
-                          </div>
-                          <div className="text-center bg-white rounded-lg p-4 shadow-sm">
-                            <div className="font-bold text-purple-600 text-lg">{result.metrics.waist}</div>
-                            <div className="text-xs text-gray-600">Cintura reduzida</div>
-                          </div>
-                          <div className="text-center bg-white rounded-lg p-4 shadow-sm">
-                            <div className="font-bold text-green-600 text-lg">{result.metrics.body_fat}</div>
-                            <div className="text-xs text-gray-600">Gordura eliminada</div>
-                          </div>
-                        </div>
-                      </div>
+                    <div className="flex justify-center">
+                      <ResultCard result={result} />
                     </div>
                   </div>
                 ))}
@@ -250,9 +302,9 @@ export default function Results({ onCtaClick }: ResultsProps) {
                 variant="outline" 
                 size="sm" 
                 onClick={prevResult}
-                className="w-12 h-12 rounded-full p-0"
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full p-0 flex-shrink-0"
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
               </Button>
               
               <div className="flex gap-2">
@@ -260,7 +312,7 @@ export default function Results({ onCtaClick }: ResultsProps) {
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
-                    className={`w-3 h-3 rounded-full transition-colors ${
+                    className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-colors ${
                       index === currentIndex ? 'bg-pink-600' : 'bg-gray-300'
                     }`}
                   />
@@ -271,9 +323,9 @@ export default function Results({ onCtaClick }: ResultsProps) {
                 variant="outline" 
                 size="sm" 
                 onClick={nextResult}
-                className="w-12 h-12 rounded-full p-0"
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full p-0 flex-shrink-0"
               >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
               </Button>
             </div>
 
@@ -287,38 +339,6 @@ export default function Results({ onCtaClick }: ResultsProps) {
           </motion.div>
         </div>
 
-        {/* Statistics */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6"
-        >
-          <div className="text-center bg-white rounded-xl p-6 shadow-lg">
-            <div className="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <TrendingDown className="w-6 h-6 text-pink-600" />
-            </div>
-            <div className="text-3xl font-bold text-gray-900 mb-2">-5,5kg</div>
-            <div className="text-gray-600">Perda média de peso</div>
-          </div>
-          
-          <div className="text-center bg-white rounded-xl p-6 shadow-lg">
-            <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Target className="w-6 h-6 text-purple-600" />
-            </div>
-            <div className="text-3xl font-bold text-gray-900 mb-2">-8cm</div>
-            <div className="text-gray-600">Redução média da cintura</div>
-          </div>
-          
-          <div className="text-center bg-white rounded-xl p-6 shadow-lg">
-            <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Clock className="w-6 h-6 text-green-600" />
-            </div>
-            <div className="text-3xl font-bold text-gray-900 mb-2">21</div>
-            <div className="text-gray-600">Dias para transformação</div>
-          </div>
-        </motion.div>
 
         {/* CTA Section */}
         <motion.div
@@ -341,13 +361,13 @@ export default function Results({ onCtaClick }: ResultsProps) {
             <Button
               onClick={onCtaClick}
               size="lg"
-              className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+              className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 w-full sm:w-auto max-w-sm mx-auto"
             >
               Quero Minha Transformação Agora
             </Button>
             
             <div className="flex items-center justify-center gap-2 mt-4 text-sm text-gray-500">
-              <span>✨ Mais de 5.000 mulheres já transformaram suas vidas</span>
+              <span>✨ Mais de 1.000 mulheres já transformaram suas vidas</span>
             </div>
           </div>
         </motion.div>
@@ -359,22 +379,22 @@ export default function Results({ onCtaClick }: ResultsProps) {
 
 function ResultCard({ result }: { result: typeof results[0] }) {
   return (
-    <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+    <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 w-full max-w-md md:max-w-2xl mx-auto">
       <CardContent className="p-0">
         
         {/* Before/After Combined Image */}
-        <div className="relative aspect-[4/3] bg-gray-100 overflow-hidden">
+        <div className="relative w-full aspect-[4/3] md:aspect-[3/2] bg-gray-100 overflow-hidden">
           <Image
             src={result.image}
             alt={`Transformação de ${result.name} - Antes e Depois`}
             fill
-            className="object-cover"
+            className="object-contain w-full h-full"
             placeholder="blur"
-            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
           />
           
           {/* Overlay with gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
           
           {/* Name overlay */}
           <div className="absolute bottom-4 left-4 text-white">
@@ -385,21 +405,6 @@ function ResultCard({ result }: { result: typeof results[0] }) {
 
         {/* Content */}
         <div className="p-6">
-          {/* Metrics */}
-          <div className="grid grid-cols-3 gap-3 mb-4">
-            <div className="text-center bg-pink-50 rounded-lg p-3">
-              <div className="font-bold text-pink-600">{result.metrics.weight}</div>
-              <div className="text-xs text-gray-600">Peso</div>
-            </div>
-            <div className="text-center bg-purple-50 rounded-lg p-3">
-              <div className="font-bold text-purple-600">{result.metrics.waist}</div>
-              <div className="text-xs text-gray-600">Cintura</div>
-            </div>
-            <div className="text-center bg-green-50 rounded-lg p-3">
-              <div className="font-bold text-green-600">{result.metrics.body_fat}</div>
-              <div className="text-xs text-gray-600">Gordura</div>
-            </div>
-          </div>
           
           <p className="text-sm text-gray-600 italic">
             &ldquo;{result.description}&rdquo;

@@ -111,7 +111,7 @@ export default function CTA({ onCtaClick }: CTAProps) {
                   1
                 </div>
                 <div>
-                                     <h4 className="font-bold mb-2">E-book: &ldquo;Receitas Fit para Mães&rdquo; (R$ 47)</h4>
+                                     <h4 className="font-bold mb-2">E-book: &ldquo;Receitas Fit para Mulheres&rdquo; (R$ 47)</h4>
                   <p className="text-sm opacity-90">30 receitas práticas e saudáveis para complementar sua transformação</p>
                 </div>
               </div>
@@ -141,8 +141,10 @@ export default function CTA({ onCtaClick }: CTAProps) {
                   4
                 </div>
                 <div>
-                  <h4 className="font-bold mb-2">Extensão de Garantia (R$ 97)</h4>
-                  <p className="text-sm opacity-90">Garantia estendida de 60 dias (ao invés de 30)</p>
+                  <h4 className="font-bold mb-2">Afiliação para comissão (R$ 97)</h4>
+                  <p className="text-sm opacity-90">
+                    Direito ao link de afiliado para comissão nas vendas do produto
+                  </p>
                 </div>
               </div>
             </div>
@@ -184,10 +186,12 @@ export default function CTA({ onCtaClick }: CTAProps) {
             <Button
               onClick={onCtaClick}
               size="lg"
-              className="bg-yellow-400 hover:bg-yellow-300 text-purple-900 px-12 py-6 text-xl font-bold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-200 w-full md:w-auto"
+              className="bg-yellow-400 hover:bg-yellow-300 text-purple-900 p-6 md:px-12 md:py-6 text-lg md:text-xl font-bold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-200 w-full md:w-auto max-w-md mx-auto"
             >
-              <Zap className="w-6 h-6 mr-2" />
-              GARANTIR MINHA TRANSFORMAÇÃO AGORA!
+              <Zap className="w-5 h-5 md:w-6 md:h-6 mr-2" />
+              <span className="text-center leading-tight whitespace-normal">
+                GARANTIR MINHA TRANSFORMAÇÃO AGORA!
+              </span>
             </Button>
             
             <p className="text-sm opacity-75 mt-4">
@@ -205,12 +209,12 @@ export default function CTA({ onCtaClick }: CTAProps) {
           >
             <div className="flex items-center gap-2">
               <Shield className="w-5 h-5" />
-              <span>Garantia de 60 dias</span>
+              <span>Garantia de 7 dias</span>
             </div>
             
             <div className="flex items-center gap-2">
               <Star className="w-5 h-5" />
-              <span>+5.000 mães transformadas</span>
+              <span>+1.000 mulheres transformadas</span>
             </div>
             
             <div className="flex items-center gap-2">
@@ -232,7 +236,7 @@ export default function CTA({ onCtaClick }: CTAProps) {
             </p>
             <p className="text-sm opacity-90 mt-2">
               Não perca esta oportunidade única de transformar sua vida. 
-              A próxima turma só abre em 3 meses.
+              Não deixe sua transformação para depois.
             </p>
           </motion.div>
         </div>

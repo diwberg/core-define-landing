@@ -20,15 +20,15 @@ const faqs = [
   },
   {
     question: "Como funciona o acesso ao conteúdo?",
-    answer: "Após a confirmação do pagamento, você recebe imediatamente um e-mail com seus dados de acesso à plataforma exclusiva. Todo o conteúdo fica disponível 24h por dia durante os 21 dias do desafio, podendo ser acessado pelo celular, tablet ou computador."
+    answer: "Após a confirmação do pagamento, você recebe imediatamente um e-mail com seus dados de acesso à plataforma exclusiva. Todo o conteúdo fica disponível por até 90 dias do desafio após a data de termino do desafio, podendo ser acessado pelo celular, tablet ou computador."
   },
   {
     question: "Sou iniciante, conseguirei acompanhar?",
-    answer: "Sim! O Core Define 3.0 foi especialmente criado para mães iniciantes. Todos os exercícios possuem versões adaptadas e progressões graduais. Começamos do básico e evoluímos juntas. Você nunca estará sozinha - temos uma comunidade incrível para te apoiar!"
+    answer: "Sim! O Core Define 3.0 foi especialmente criado para mulheres iniciantes. Todos os exercícios possuem versões adaptadas e progressões graduais. Começamos do básico e evoluímos juntas. Você nunca estará sozinha - temos uma comunidade incrível para te apoiar!"
   },
   {
     question: "Quanto tempo por dia preciso dedicar?",
-    answer: "Apenas 10 minutos por dia! Sabemos que a rotina de mãe é corrida, por isso criamos treinos super eficazes que cabem na sua agenda. Você pode fazer pela manhã antes dos filhos acordarem, à noite ou em qualquer momento livre do seu dia."
+    answer: "No mínimo 15 minutos por dia! Sabemos que a rotina de mulheres é corrida, por isso criamos treinos super eficazes que cabem na sua agenda. Você pode fazer pela manhã antes dos filhos acordarem, à noite ou em qualquer momento livre do seu dia."
   },
   {
     question: "E se eu não conseguir resultados?",
@@ -36,7 +36,7 @@ const faqs = [
   },
   {
     question: "Como funciona o suporte durante o desafio?",
-    answer: "Você terá acesso ao nosso grupo exclusivo no Telegram onde nossa equipe e outras participantes estarão prontas para te ajudar. Além disso, fazemos lives semanais para esclarecer dúvidas e manter a motivação em alta!"
+    answer: "Você terá acesso ao nosso grupo exclusivo no Whatsapp onde nossa equipe e outras participantes estarão prontas para te ajudar. Além disso, fazemos lives semanais para esclarecer dúvidas e manter a motivação em alta!"
   },
   {
     question: "Posso fazer mesmo sendo mãe recente?",
@@ -68,7 +68,7 @@ export default function FAQ() {
           </h2>
           
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Respondemos as principais perguntas que as mães fazem sobre o Core Define 3.0
+            Respondemos as principais perguntas que as mulheres fazem sobre o Core Define 3.0
           </p>
         </motion.div>
 
