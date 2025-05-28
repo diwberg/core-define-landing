@@ -1,6 +1,8 @@
 import { Metadata } from 'next'
 import { Heart, DollarSign, Users, MessageCircle, ArrowRight, Star, Gift, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
+import { useEffect } from 'react'
+import { trackAffiliatePageView, trackAffiliateClick } from '@/app/components/FacebookPixel'
 
 export const metadata: Metadata = {
   title: 'Programa de Afiliadas - Core Define',
@@ -8,6 +10,15 @@ export const metadata: Metadata = {
 }
 
 export default function AfiliadosPage() {
+  useEffect(() => {
+    // Track affiliate page view
+    trackAffiliatePageView()
+  }, [])
+
+  const handleAffiliateClick = () => {
+    trackAffiliateClick()
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50">
       {/* Back to Home Button */}
@@ -217,6 +228,7 @@ export default function AfiliadosPage() {
               href="https://app-vlc.hotmart.com/affiliate-recruiting/view/3951D99078605"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={handleAffiliateClick}
               className="inline-flex items-center gap-3 bg-white text-pink-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-pink-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
               <MessageCircle className="w-6 h-6" />

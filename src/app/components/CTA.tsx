@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Clock, Gift, Shield, Zap, Star, LucideLink } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { trackClick, trackInitiateCheckout } from './FacebookPixel'
 
 interface CTAProps {
   onCtaClick: () => void
@@ -46,6 +47,12 @@ export default function CTA({ onCtaClick }: CTAProps) {
 
     return () => clearInterval(timer)
   }, [])
+
+  const handleCtaClick = () => {
+    trackClick('main_cta_button')
+    trackInitiateCheckout()
+    onCtaClick()
+  }
 
   return (
     <section className="py-20 bg-gradient-to-br from-pink-600 to-purple-700 relative overflow-hidden">
@@ -201,7 +208,7 @@ export default function CTA({ onCtaClick }: CTAProps) {
             className="mb-8"
           >
             <Button
-              onClick={onCtaClick}
+              onClick={handleCtaClick}
               size="lg"
               className="bg-yellow-400 hover:bg-yellow-300 text-purple-900 p-6 md:px-12 md:py-6 text-lg md:text-xl font-bold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-200 w-full md:w-auto max-w-md mx-auto"
             >

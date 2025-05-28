@@ -3,8 +3,8 @@
 import { useEffect } from 'react'
 import Script from 'next/script'
 
-// Facebook Pixel ID - Replace with your actual pixel ID
-const FACEBOOK_PIXEL_ID = 'YOUR_PIXEL_ID_HERE'
+// Facebook Pixel ID from environment variables
+const FACEBOOK_PIXEL_ID = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID || ''
 
 declare global {
   interface Window {
@@ -18,11 +18,18 @@ interface FacebookPixelProps {
 
 export default function FacebookPixel({ pixelId = FACEBOOK_PIXEL_ID }: FacebookPixelProps) {
   useEffect(() => {
-    // Initialize Facebook Pixel
-    if (typeof window !== 'undefined' && window.fbq) {
+    // Initialize Facebook Pixel and track PageView
+    if (typeof window !== 'undefined' && window.fbq && pixelId) {
       window.fbq('track', 'PageView')
+      console.log('Facebook Pixel PageView tracked for:', pixelId)
     }
-  }, [])
+  }, [pixelId])
+
+  // Don't render if no pixel ID is provided
+  if (!pixelId) {
+    console.warn('Facebook Pixel ID not found in environment variables')
+    return null
+  }
 
   return (
     <>
@@ -59,14 +66,16 @@ export default function FacebookPixel({ pixelId = FACEBOOK_PIXEL_ID }: FacebookP
 
 // Helper functions to track events
 export const trackEvent = (eventName: string, parameters?: Record<string, unknown>) => {
-  if (typeof window !== 'undefined' && window.fbq) {
+  if (typeof window !== 'undefined' && window.fbq && FACEBOOK_PIXEL_ID) {
     window.fbq('track', eventName, parameters)
+    console.log(`Facebook Pixel event tracked: ${eventName}`, parameters)
   }
 }
 
 export const trackCustomEvent = (eventName: string, parameters?: Record<string, unknown>) => {
-  if (typeof window !== 'undefined' && window.fbq) {
+  if (typeof window !== 'undefined' && window.fbq && FACEBOOK_PIXEL_ID) {
     window.fbq('trackCustom', eventName, parameters)
+    console.log(`Facebook Pixel custom event tracked: ${eventName}`, parameters)
   }
 }
 
@@ -100,9 +109,10 @@ export const trackPurchase = (value: number = 97.00) => {
 }
 
 export const trackClick = (buttonLocation: string) => {
-  trackCustomEvent('Click', {
+  trackCustomEvent('ButtonClick', {
     button_location: buttonLocation,
-    content_name: 'Core Define 3.0'
+    content_name: 'Core Define 3.0',
+    page_url: typeof window !== 'undefined' ? window.location.href : ''
   })
 }
 
@@ -110,6 +120,23 @@ export const trackViewContent = (contentType: string) => {
   trackEvent('ViewContent', {
     content_type: contentType,
     content_name: 'Core Define 3.0'
+  })
+}
+
+export const trackAffiliatePageView = () => {
+  trackCustomEvent('AffiliatePageView', {
+    content_name: 'Core Define Affiliate Program',
+    content_category: 'Affiliate',
+    page_url: typeof window !== 'undefined' ? window.location.href : ''
+  })
+}
+
+export const trackAffiliateClick = () => {
+  trackCustomEvent('AffiliateClick', {
+    content_name: 'Core Define Affiliate Program',
+    content_category: 'Affiliate',
+    button_location: 'affiliate_signup',
+    page_url: typeof window !== 'undefined' ? window.location.href : ''
   })
 }
 
@@ -121,6 +148,8 @@ export const useFacebookPixel = () => {
     trackInitiateCheckout,
     trackPurchase,
     trackViewContent,
+    trackAffiliatePageView,
+    trackAffiliateClick,
     trackEvent,
     trackCustomEvent
   }

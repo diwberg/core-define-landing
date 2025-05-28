@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { ArrowDown, Star } from 'lucide-react'
+import { trackClick } from './FacebookPixel'
 
 interface HeroProps {
   onCtaClick: () => void
@@ -12,6 +13,11 @@ export default function Hero({ onCtaClick }: HeroProps) {
   const scrollToFeatures = () => {
     const featuresSection = document.getElementById('features')
     featuresSection?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  const handleCtaClick = () => {
+    trackClick('hero_cta_button')
+    onCtaClick()
   }
 
   return (
@@ -86,7 +92,7 @@ export default function Hero({ onCtaClick }: HeroProps) {
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-12"
             >
               <Button
-                onClick={onCtaClick}
+                onClick={handleCtaClick}
                 size="lg"
                 className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 w-full sm:w-auto"
               >
