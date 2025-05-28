@@ -1,13 +1,9 @@
-import { Metadata } from 'next'
+'use client'
+
 import { Heart, DollarSign, Users, MessageCircle, ArrowRight, Star, Gift, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect } from 'react'
 import { trackAffiliatePageView, trackAffiliateClick } from '@/app/components/FacebookPixel'
-
-export const metadata: Metadata = {
-  title: 'Programa de Afiliadas - Core Define',
-  description: 'Ganhe uma renda extra indicando o Core Define. 25% de comissão em cada venda. Exclusivo para alunas das primeiras edições.',
-}
 
 export default function AfiliadosPage() {
   useEffect(() => {
