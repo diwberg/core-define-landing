@@ -32,7 +32,8 @@ const footerLinks = [
       { name: 'Sobre o Core Define', href: '/#about' },
       { name: 'Como Funciona', href: '/#features' },
       { name: 'Depoimentos', href: '/#testimonials' },
-      { name: 'Perguntas Frequentes', href: '/#faq' }
+      { name: 'Perguntas Frequentes', href: '/#faq' },
+      { name: 'Afiliados', href: '/afiliados' }
     ]
   },
   {
