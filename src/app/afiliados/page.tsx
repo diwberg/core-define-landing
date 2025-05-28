@@ -202,7 +202,7 @@ export default function AfiliadosPage() {
             </div>
             
             <a 
-              href="https://wa.me/5511999999999?text=Oi%20Dra%20Amandha!%20Tenho%20interesse%20no%20Programa%20de%20Afiliadas%20do%20Core%20Define.%20Pode%20me%20enviar%20mais%20informações?"
+              href="https://app-vlc.hotmart.com/affiliate-recruiting/view/3951D99078605"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-white text-pink-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-pink-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
@@ -213,7 +213,7 @@ export default function AfiliadosPage() {
             </a>
             
             <p className="text-sm mt-6 opacity-75">
-              Resposta rápida via WhatsApp
+              Se precisar de ajuda, contate-nos pelo WhatsApp
             </p>
           </div>
         </div>
