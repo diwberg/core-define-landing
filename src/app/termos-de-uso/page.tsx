@@ -106,8 +106,8 @@ export default function TermosDeUso() {
               </h2>
               <div className="text-gray-700 leading-relaxed space-y-4">
                 <p>
-                  <strong>Garantia de 60 dias:</strong> Oferecemos garantia incondicional de 
-                  satisfação por 60 dias. Se não ficar satisfeita com os resultados, 
+                  <strong>Garantia de 7 dias:</strong> Oferecemos garantia incondicional de 
+                  satisfação por 7 dias. Se não ficar satisfeita com os resultados, 
                   devolvemos 100% do valor pago.
                 </p>
                 <p>
@@ -115,7 +115,7 @@ export default function TermosDeUso() {
                   e-mail (contato@coredefine.com.br) ou WhatsApp dentro do prazo de garantia.
                 </p>
                 <p>
-                  <strong>Processamento:</strong> O reembolso será processado em até 7 dias 
+                  <strong>Processamento:</strong> O reembolso será processado em até 4 dias 
                   úteis após a solicitação.
                 </p>
               </div>

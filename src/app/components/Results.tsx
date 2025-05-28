@@ -4,7 +4,8 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { ChevronLeft, ChevronRight, TrendingDown, Clock, Target } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 const results = [
   {
@@ -12,8 +13,7 @@ const results = [
     name: "Maria Silva",
     age: 32,
     time: "21 dias",
-    before: "/results/before-1.jpg",
-    after: "/results/after-1.jpg",
+    image: "/results/result-1.jpg",
     metrics: {
       weight: "-5,2 kg",
       waist: "-8 cm",
@@ -26,8 +26,7 @@ const results = [
     name: "Ana Rodrigues", 
     age: 28,
     time: "21 dias",
-    before: "/results/before-2.jpg",
-    after: "/results/after-2.jpg",
+    image: "/results/result-2.jpg",
     metrics: {
       weight: "-4,8 kg",
       waist: "-6 cm",
@@ -40,8 +39,7 @@ const results = [
     name: "Juliana Costa",
     age: 35,
     time: "21 dias", 
-    before: "/results/before-3.jpg",
-    after: "/results/after-3.jpg",
+    image: "/results/result-3.jpg",
     metrics: {
       weight: "-6,1 kg",
       waist: "-10 cm",
@@ -54,8 +52,7 @@ const results = [
     name: "Carla Mendes",
     age: 30,
     time: "21 dias",
-    before: "/results/before-4.jpg", 
-    after: "/results/after-4.jpg",
+    image: "/results/result-4.jpg",
     metrics: {
       weight: "-3,9 kg",
       waist: "-7 cm",
@@ -68,8 +65,7 @@ const results = [
     name: "Patricia Lima",
     age: 29,
     time: "21 dias",
-    before: "/results/before-5.jpg",
-    after: "/results/after-5.jpg", 
+    image: "/results/result-5.jpg",
     metrics: {
       weight: "-5,7 kg",
       waist: "-9 cm",
@@ -85,7 +81,18 @@ interface ResultsProps {
 
 export default function Results({ onCtaClick }: ResultsProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [showAfter, setShowAfter] = useState<{ [key: number]: boolean }>({})
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+
+  // Auto-play carousel
+  useEffect(() => {
+    if (!isAutoPlaying) return
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % results.length)
+    }, 4000) // Change slide every 4 seconds
+
+    return () => clearInterval(interval)
+  }, [isAutoPlaying])
 
   const nextResult = () => {
     setCurrentIndex((prev) => (prev + 1) % results.length)
@@ -95,11 +102,12 @@ export default function Results({ onCtaClick }: ResultsProps) {
     setCurrentIndex((prev) => (prev - 1 + results.length) % results.length)
   }
 
-  const toggleAfter = (id: number) => {
-    setShowAfter(prev => ({
-      ...prev,
-      [id]: !prev[id]
-    }))
+  const handleMouseEnter = () => {
+    setIsAutoPlaying(false)
+  }
+
+  const handleMouseLeave = () => {
+    setIsAutoPlaying(true)
   }
 
   return (
@@ -121,7 +129,7 @@ export default function Results({ onCtaClick }: ResultsProps) {
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Veja as transformações reais de mães que mudaram suas vidas em apenas 21 dias
+            Veja as transformações reais de mulheres que mudaram suas vidas em apenas 21 dias
           </p>
         </motion.div>
 
@@ -133,12 +141,10 @@ export default function Results({ onCtaClick }: ResultsProps) {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="relative"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           >
-            <ResultCard 
-              result={results[currentIndex]} 
-              showAfter={showAfter[results[currentIndex].id]}
-              onToggle={() => toggleAfter(results[currentIndex].id)}
-            />
+            <ResultCard result={results[currentIndex]} />
             
             {/* Navigation */}
             <div className="flex justify-center items-center mt-8 gap-4">
@@ -172,26 +178,113 @@ export default function Results({ onCtaClick }: ResultsProps) {
                 <ChevronRight className="w-5 h-5" />
               </Button>
             </div>
+
+            {/* Auto-play indicator */}
+            <div className="flex justify-center mt-4">
+              <div className="flex items-center gap-2 text-xs text-gray-500">
+                <div className={`w-2 h-2 rounded-full ${isAutoPlaying ? 'bg-green-500' : 'bg-gray-400'}`}></div>
+                <span>{isAutoPlaying ? 'Reprodução automática' : 'Pausado'}</span>
+              </div>
+            </div>
           </motion.div>
         </div>
 
-        {/* Desktop Grid */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {results.slice(0, 3).map((result, index) => (
-            <motion.div
-              key={result.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <ResultCard 
-                result={result}
-                showAfter={showAfter[result.id]}
-                onToggle={() => toggleAfter(result.id)}
-              />
-            </motion.div>
-          ))}
+        {/* Desktop Auto-rotating Carousel */}
+        <div className="hidden md:block">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="relative"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            {/* Main carousel container */}
+            <div className="relative overflow-hidden rounded-2xl">
+              <motion.div 
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+              >
+                {results.map((result) => (
+                  <div key={result.id} className="w-full flex-shrink-0">
+                    <div className="grid lg:grid-cols-3 gap-8 items-center">
+                      <div className="lg:col-span-2">
+                        <ResultCard result={result} />
+                      </div>
+                      <div className="space-y-6">
+                        <div className="text-center">
+                          <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                            Transformação Incrível!
+                          </h3>
+                          <p className="text-gray-600">
+                            {result.description}
+                          </p>
+                        </div>
+                        
+                        {/* Metrics highlight */}
+                        <div className="grid grid-cols-3 gap-4">
+                          <div className="text-center bg-white rounded-lg p-4 shadow-sm">
+                            <div className="font-bold text-pink-600 text-lg">{result.metrics.weight}</div>
+                            <div className="text-xs text-gray-600">Peso perdido</div>
+                          </div>
+                          <div className="text-center bg-white rounded-lg p-4 shadow-sm">
+                            <div className="font-bold text-purple-600 text-lg">{result.metrics.waist}</div>
+                            <div className="text-xs text-gray-600">Cintura reduzida</div>
+                          </div>
+                          <div className="text-center bg-white rounded-lg p-4 shadow-sm">
+                            <div className="font-bold text-green-600 text-lg">{result.metrics.body_fat}</div>
+                            <div className="text-xs text-gray-600">Gordura eliminada</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Desktop Navigation */}
+            <div className="flex justify-center items-center mt-8 gap-4">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={prevResult}
+                className="w-12 h-12 rounded-full p-0"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </Button>
+              
+              <div className="flex gap-2">
+                {results.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(index)}
+                    className={`w-3 h-3 rounded-full transition-colors ${
+                      index === currentIndex ? 'bg-pink-600' : 'bg-gray-300'
+                    }`}
+                  />
+                ))}
+              </div>
+              
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={nextResult}
+                className="w-12 h-12 rounded-full p-0"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </Button>
+            </div>
+
+            {/* Auto-play indicator */}
+            <div className="flex justify-center mt-4">
+              <div className="flex items-center gap-2 text-sm text-gray-500">
+                <div className={`w-2 h-2 rounded-full ${isAutoPlaying ? 'bg-green-500 animate-pulse' : 'bg-gray-400'}`}></div>
+                <span>{isAutoPlaying ? 'Reprodução automática ativa' : 'Pausado - mova o mouse para continuar'}</span>
+              </div>
+            </div>
+          </motion.div>
         </div>
 
         {/* Statistics */}
@@ -240,7 +333,7 @@ export default function Results({ onCtaClick }: ResultsProps) {
               Sua transformação começa hoje!
             </h3>
             <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-              Junte-se a essas mães incríveis e conquiste o corpo que você sempre sonhou.
+              Junte-se a essas mulheres incríveis e conquiste o corpo que você sempre sonhou.
               <br />
               <strong>Resultados garantidos ou seu dinheiro de volta!</strong>
             </p>
@@ -254,7 +347,7 @@ export default function Results({ onCtaClick }: ResultsProps) {
             </Button>
             
             <div className="flex items-center justify-center gap-2 mt-4 text-sm text-gray-500">
-              <span>✨ Mais de 5.000 mães já transformaram suas vidas</span>
+              <span>✨ Mais de 5.000 mulheres já transformaram suas vidas</span>
             </div>
           </div>
         </motion.div>
@@ -264,52 +357,34 @@ export default function Results({ onCtaClick }: ResultsProps) {
   )
 }
 
-function ResultCard({ 
-  result, 
-  showAfter, 
-  onToggle 
-}: { 
-  result: typeof results[0]
-  showAfter: boolean
-  onToggle: () => void
-}) {
+function ResultCard({ result }: { result: typeof results[0] }) {
   return (
     <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
       <CardContent className="p-0">
         
-        {/* Before/After Images */}
-        <div className="relative aspect-[4/5] bg-gray-200 overflow-hidden">
-          {/* Placeholder for before/after images */}
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300">
-            <div className="text-center">
-              <div className="w-24 h-24 bg-white rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg">
-                <span className="text-2xl font-bold text-pink-600">
-                  {showAfter ? 'DEPOIS' : 'ANTES'}
-                </span>
-              </div>
-              <p className="text-gray-600 font-medium">Foto {showAfter ? 'Depois' : 'Antes'}</p>
-              <p className="text-sm text-gray-500">{result.name}</p>
-            </div>
-          </div>
+        {/* Before/After Combined Image */}
+        <div className="relative aspect-[4/3] bg-gray-100 overflow-hidden">
+          <Image
+            src={result.image}
+            alt={`Transformação de ${result.name} - Antes e Depois`}
+            fill
+            className="object-cover"
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+          />
           
-          {/* Toggle Button */}
-          <button
-            onClick={onToggle}
-            className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium text-gray-700 hover:bg-white transition-colors shadow-lg"
-          >
-            {showAfter ? 'Ver Antes' : 'Ver Depois'}
-          </button>
+          {/* Overlay with gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          
+          {/* Name overlay */}
+          <div className="absolute bottom-4 left-4 text-white">
+            <h4 className="font-bold text-lg">{result.name}</h4>
+            <p className="text-sm opacity-90">{result.age} anos • {result.time}</p>
+          </div>
         </div>
 
         {/* Content */}
         <div className="p-6">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <h4 className="font-bold text-lg text-gray-900">{result.name}</h4>
-              <p className="text-sm text-gray-500">{result.age} anos • {result.time}</p>
-            </div>
-          </div>
-          
           {/* Metrics */}
           <div className="grid grid-cols-3 gap-3 mb-4">
             <div className="text-center bg-pink-50 rounded-lg p-3">

@@ -2,25 +2,25 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Facebook, Instagram, MessageCircle, Mail, Phone, MapPin, Heart } from 'lucide-react'
+import { Facebook, Instagram, MessageCircle, Mail, MapPin, Heart } from 'lucide-react'
 
 const socialLinks = [
   {
     name: 'Facebook',
     icon: Facebook,
-    href: 'https://facebook.com/coredefine',
+    href: 'https://www.facebook.com/profile.php?id=100094384980011',
     color: 'hover:text-blue-600'
   },
   {
     name: 'Instagram',
     icon: Instagram,
-    href: 'https://instagram.com/coredefine',
+    href: 'https://www.instagram.com/amandha1/',
     color: 'hover:text-pink-600'
   },
   {
     name: 'WhatsApp',
     icon: MessageCircle,
-    href: 'https://wa.me/5511999999999',
+    href: 'https://wa.me/5599982602003',
     color: 'hover:text-green-600'
   }
 ]
@@ -29,10 +29,10 @@ const footerLinks = [
   {
     title: 'Programa',
     links: [
-      { name: 'Sobre o Core Define', href: '#about' },
-      { name: 'Como Funciona', href: '#features' },
-      { name: 'Depoimentos', href: '#testimonials' },
-      { name: 'Perguntas Frequentes', href: '#faq' }
+      { name: 'Sobre o Core Define', href: '/#about' },
+      { name: 'Como Funciona', href: '/#features' },
+      { name: 'Depoimentos', href: '/#testimonials' },
+      { name: 'Perguntas Frequentes', href: '/#faq' }
     ]
   },
   {
@@ -47,10 +47,10 @@ const footerLinks = [
   {
     title: 'Suporte',
     links: [
-      { name: 'Central de Ajuda', href: '#faq' },
-      { name: 'Contato', href: 'mailto:contato@coredefine.com.br' },
-      { name: 'WhatsApp', href: 'https://wa.me/5511999999999' },
-      { name: 'Área do Aluno', href: 'https://plataforma.coredefine.com.br' }
+      { name: 'Central de Ajuda', href: '/#faq' },
+      { name: 'Contato', href: 'mailto:contato@cuidandodemim.org' },
+      { name: 'WhatsApp', href: 'https://wa.me/5599982602003' },
+      { name: 'Área do Aluno', href: 'https://hotmart.com/pt-br/club/cuidandodemim' }
     ]
   }
 ]
@@ -81,15 +81,11 @@ export default function Footer() {
             <div className="space-y-3 text-gray-400">
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-pink-400" />
-                <span className="text-sm">contato@coredefine.com.br</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-pink-400" />
-                <span className="text-sm">(11) 99999-9999</span>
+                <span className="text-sm">contato@cuidandodemim.org</span>
               </div>
               <div className="flex items-center gap-3">
                 <MapPin className="w-4 h-4 text-pink-400" />
-                <span className="text-sm">São Paulo, SP - Brasil</span>
+                <span className="text-sm">Brasil</span>
               </div>
             </div>
             
@@ -159,10 +155,10 @@ export default function Footer() {
               <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
                 <span className="text-white font-bold text-sm">✓</span>
               </div>
-              <h4 className="font-bold text-lg">Garantia de 60 Dias</h4>
+              <h4 className="font-bold text-lg">Garantia de 7 Dias</h4>
             </div>
             <p className="text-gray-300 text-center text-sm">
-              Experimente o Core Define 3.0 por 60 dias. Se não ficar satisfeita, 
+              Experimente o Core Define 3.0 por 7 dias. Se não ficar satisfeita, 
               devolvemos 100% do seu dinheiro, sem perguntas!
             </p>
           </div>
@@ -178,10 +174,7 @@ export default function Footer() {
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-gray-400 text-sm text-center md:text-left">
-              <p>© 2024 Core Define. Todos os direitos reservados.</p>
-              <p className="mt-1">
-                CNPJ: 00.000.000/0001-00 • São Paulo, SP
-              </p>
+              <p>© 2025 Cuidando de Mim. Todos os direitos reservados.</p>
             </div>
             
             <div className="flex items-center gap-2 text-gray-400 text-sm">
@@ -192,7 +185,7 @@ export default function Footer() {
           </div>
           
           <div className="mt-6 text-center">
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-gray-300">
               Este produto não substitui o acompanhamento médico. Consulte sempre um profissional de saúde 
               antes de iniciar qualquer programa de exercícios.
             </p>

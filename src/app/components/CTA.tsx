@@ -12,8 +12,8 @@ interface CTAProps {
 
 export default function CTA({ onCtaClick }: CTAProps) {
   const [timeLeft, setTimeLeft] = useState({
-    hours: 23,
-    minutes: 59,
+    hours: 14,
+    minutes: 29,
     seconds: 59
   })
 

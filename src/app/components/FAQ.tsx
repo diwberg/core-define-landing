@@ -32,7 +32,7 @@ const faqs = [
   },
   {
     question: "E se eu não conseguir resultados?",
-    answer: "Oferecemos garantia incondicional de 30 dias! Se por qualquer motivo você não ficar satisfeita com os resultados, devolvemos 100% do seu dinheiro, sem perguntas, sem burocracias. Sua satisfação é nossa prioridade absoluta."
+    answer: "Oferecemos garantia incondicional de 7 dias! Se por qualquer motivo você não ficar satisfeita com os resultados, devolvemos 100% do seu dinheiro, sem perguntas, sem burocracias. Sua satisfação é nossa prioridade absoluta."
   },
   {
     question: "Como funciona o suporte durante o desafio?",
@@ -122,9 +122,11 @@ export default function FAQ() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <button className="bg-white text-pink-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                  💬 Falar no WhatsApp
-                </button>
+                <a href="https://wa.me/5599982602003" target="_blank" rel="noopener noreferrer">
+                  <button className="bg-white text-pink-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                    💬 Falar no WhatsApp
+                  </button>
+                </a>
                 <span className="text-sm opacity-80">
                   Respondemos em até 5 minutos
                 </span>

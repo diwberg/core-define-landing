@@ -7,13 +7,13 @@ import { Clock, Users, Target, Shield, Heart, Zap } from 'lucide-react'
 const features = [
   {
     icon: Clock,
-    title: "Treinos de apenas 10 minutos",
+    title: "Treinos de apenas 15 minutos",
     description: "Exercícios rápidos e eficazes que cabem na sua rotina corrida de mãe",
     color: "from-pink-500 to-rose-500"
   },
   {
     icon: Heart,
-    title: "Para mães iniciantes",
+    title: "Para iniciantes",
     description: "Orientações passo a passo especialmente criadas para quem está começando",
     color: "from-purple-500 to-indigo-500"
   },
@@ -26,13 +26,13 @@ const features = [
   {
     icon: Shield,
     title: "Garantia total",
-    description: "Resultados visíveis em 21 dias ou seu dinheiro de volta sem questionamentos",
+    description: "Resultados visíveis em 21 dias, se em 7 dias não ficar satisfeita, devolvemos 100% do seu dinheiro",
     color: "from-green-500 to-emerald-500"
   },
   {
     icon: Target,
     title: "Resultados comprovados",
-    description: "Mais de 5.000 mães já transformaram seus corpos com nosso método",
+    description: "Mais de 1.000 mulheres já transformaram seus corpos com nosso método",
     color: "from-orange-500 to-red-500"
   },
   {
@@ -61,7 +61,7 @@ export default function Features() {
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Um método testado e aprovado por milhares de mães que conquistaram o corpo dos sonhos
+            Um método testado e aprovado por milhares de mulheres que conquistaram o corpo dos sonhos
           </p>
         </motion.div>
 
@@ -114,16 +114,16 @@ export default function Features() {
               Pronta para sua transformação?
             </h3>
             <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
-              Junte-se a milhares de mães que já mudaram suas vidas em apenas 21 dias
+              Junte-se a milhares de mulheres que já mudaram suas vidas em apenas 21 dias
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <div className="flex items-center gap-2 text-green-600 font-medium">
                 <Shield className="w-5 h-5" />
-                <span>Garantia de 30 dias</span>
+                <span>Garantia de 7 dias</span>
               </div>
               <div className="flex items-center gap-2 text-blue-600 font-medium">
                 <Users className="w-5 h-5" />
-                <span>+5.000 mães transformadas</span>
+                <span>+1.000 mulheres transformadas</span>
               </div>
             </div>
           </div>
