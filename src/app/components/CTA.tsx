@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Clock, Gift, Shield, Zap, Star } from 'lucide-react'
+import { Clock, Gift, Shield, Zap, Star, LucideLink } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
 interface CTAProps {
@@ -12,24 +12,36 @@ interface CTAProps {
 
 export default function CTA({ onCtaClick }: CTAProps) {
   const [timeLeft, setTimeLeft] = useState({
-    hours: 14,
-    minutes: 29,
-    seconds: 59
+    hours: 0,
+    minutes: 0,
+    seconds: 0
   })
 
   useEffect(() => {
+    const calculateTimeLeft = () => {
+      const now = new Date()
+      const midnight = new Date()
+      midnight.setHours(24, 0, 0, 0) // Próxima meia-noite
+      
+      const difference = midnight.getTime() - now.getTime()
+      
+      if (difference > 0) {
+        const hours = Math.floor(difference / (1000 * 60 * 60))
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000)
+        
+        return { hours, minutes, seconds }
+      } else {
+        // Se passou da meia-noite, reinicia para o próximo dia
+        return { hours: 23, minutes: 59, seconds: 59 }
+      }
+    }
+
+    // Calcula o tempo inicial
+    setTimeLeft(calculateTimeLeft())
+
     const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev.seconds > 0) {
-          return { ...prev, seconds: prev.seconds - 1 }
-        } else if (prev.minutes > 0) {
-          return { ...prev, minutes: prev.minutes - 1, seconds: 59 }
-        } else if (prev.hours > 0) {
-          return { hours: prev.hours - 1, minutes: 59, seconds: 59 }
-        } else {
-          return { hours: 23, minutes: 59, seconds: 59 }
-        }
-      })
+      setTimeLeft(calculateTimeLeft())
     }, 1000)
 
     return () => clearInterval(timer)
@@ -146,6 +158,11 @@ export default function CTA({ onCtaClick }: CTAProps) {
                     Direito ao link de afiliado para comissão nas vendas do produto
                   </p>
                 </div>
+                <a href="/afiliados" className="opacity-80 hover:opacity-100">
+                <Button variant="ghost">
+                <LucideLink className="w-5 h-5" />
+                </Button>
+                </a>
               </div>
             </div>
             

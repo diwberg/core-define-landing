@@ -17,7 +17,7 @@ export default function AfiliadosPage() {
           className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm text-gray-700 px-4 py-2 rounded-full font-medium text-sm hover:bg-white hover:text-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl border border-gray-200"
         >
           <ArrowLeft className="w-4 h-4" />
-          Voltar ao Home
+          Voltar
         </Link>
       </div>
 
