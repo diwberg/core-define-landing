@@ -86,7 +86,7 @@ export default function TermosDeUso() {
               <div className="text-gray-700 leading-relaxed space-y-4">
                 <p>
                   <strong>Preço:</strong> O investimento no Core Define 3.0 é de R$ 97,00 à vista 
-                  ou parcelado em até 3x sem juros no cartão de crédito.
+                  ou parcelado em até 3x no cartão de crédito.
                 </p>
                 <p>
                   <strong>Pagamento:</strong> Aceitamos cartões de crédito, débito e PIX. 

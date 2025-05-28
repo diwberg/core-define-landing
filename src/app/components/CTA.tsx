@@ -171,7 +171,7 @@ export default function CTA({ onCtaClick }: CTAProps) {
                 <span className="text-yellow-300">R$ 97,00</span>
                 <span className="text-lg opacity-75 ml-2">à vista</span>
               </div>
-              <p className="text-xl">ou 3x de R$ 35,00 sem juros</p>
+              <p className="text-xl">ou 3x de R$ 34,62</p>
             </div>
           </motion.div>
 

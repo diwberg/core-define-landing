@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
-import { Heart, DollarSign, Users, MessageCircle, ArrowRight, Star, Gift } from 'lucide-react'
+import { Heart, DollarSign, Users, MessageCircle, ArrowRight, Star, Gift, ArrowLeft } from 'lucide-react'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Programa de Afiliadas - Core Define',
@@ -9,6 +10,17 @@ export const metadata: Metadata = {
 export default function AfiliadosPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50">
+      {/* Back to Home Button */}
+      <div className="fixed top-6 left-6 z-50">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm text-gray-700 px-4 py-2 rounded-full font-medium text-sm hover:bg-white hover:text-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl border border-gray-200"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Voltar ao Home
+        </Link>
+      </div>
+
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
