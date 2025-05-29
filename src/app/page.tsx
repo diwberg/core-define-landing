@@ -16,6 +16,22 @@ export default function HomePage() {
   const [isLoading, setIsLoading] = useState(false)
   const { trackLead, trackClick, trackInitiateCheckout } = useFacebookPixel()
 
+  const redirectToCheckout = (url: string) => {
+    // Try to open in new tab first (better UX for desktop)
+    try {
+      const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+      
+      // If popup was blocked or failed, fallback to same tab redirect
+      if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+        window.location.href = url
+      }
+    } catch (error) {
+      // Fallback for any errors
+      console.warn('Failed to open in new tab, redirecting in same tab:', error)
+      window.location.href = url
+    }
+  }
+
   const handleCtaClick = async () => {
     setIsLoading(true)
     
@@ -24,11 +40,10 @@ export default function HomePage() {
     trackClick('cta-button')
     trackInitiateCheckout()
     
-    // Open payment page in new tab to preserve landing page reference
+    // Redirect to payment page with proper error handling
     setTimeout(() => {
       setIsLoading(false)
-      // Open in new tab/window
-      window.open('https://pay.hotmart.com/G99078584W', '_blank', 'noopener,noreferrer')
+      redirectToCheckout('https://pay.hotmart.com/G99078584W')
     }, 1000)
   }
 
