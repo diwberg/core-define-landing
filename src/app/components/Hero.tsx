@@ -100,7 +100,7 @@ export default function Hero({ onCtaClick }: HeroProps) {
               </Button>
               
               <p className="text-sm text-gray-500 text-center">
-                ⚡ Vagas limitadas - Início em 02/06/2025
+                ⚡ Vagas limitadas - Início em 09/06/2025
               </p>
             </motion.div>
 
