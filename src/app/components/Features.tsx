@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
 import { Clock, Users, Target, Shield, Heart, Zap } from 'lucide-react'
+import { useAptabase } from '@aptabase/react'
+import { useEffect } from 'react'
 
 const features = [
   {
@@ -44,6 +46,20 @@ const features = [
 ]
 
 export default function Features() {
+  const { trackEvent } = useAptabase()
+
+  // Track section view when component mounts
+  useEffect(() => {
+    trackEvent('section_view', { section: 'features' })
+  }, [trackEvent])
+
+  const handleFeatureHover = (featureTitle: string) => {
+    trackEvent('feature_hover', { 
+      section: 'features',
+      feature: featureTitle 
+    })
+  }
+
   return (
     <section id="features" className="py-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,6 +90,7 @@ export default function Features() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
+              onHoverStart={() => handleFeatureHover(feature.title)}
               className="h-full"
             >
               <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-gray-50">

@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { useAptabase } from '@aptabase/react'
 
 const results = [
   {
@@ -160,8 +161,14 @@ interface ResultsProps {
 }
 
 export default function Results({ onCtaClick }: ResultsProps) {
+  const { trackEvent } = useAptabase()
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+
+  // Track section view when component mounts
+  useEffect(() => {
+    trackEvent('section_view', { section: 'results' })
+  }, [trackEvent])
 
   // Auto-play carousel
   useEffect(() => {
@@ -176,18 +183,41 @@ export default function Results({ onCtaClick }: ResultsProps) {
 
   const nextResult = () => {
     setCurrentIndex((prev) => (prev + 1) % results.length)
+    trackEvent('results_navigation', { 
+      section: 'results',
+      action: 'next',
+      result_index: (currentIndex + 1) % results.length,
+      result_name: results[(currentIndex + 1) % results.length].name
+    })
   }
 
   const prevResult = () => {
     setCurrentIndex((prev) => (prev - 1 + results.length) % results.length)
+    trackEvent('results_navigation', { 
+      section: 'results',
+      action: 'previous',
+      result_index: (currentIndex - 1 + results.length) % results.length,
+      result_name: results[(currentIndex - 1 + results.length) % results.length].name
+    })
   }
 
   const handleMouseEnter = () => {
     setIsAutoPlaying(false)
+    trackEvent('results_autoplay_pause', { section: 'results' })
   }
 
   const handleMouseLeave = () => {
     setIsAutoPlaying(true)
+    trackEvent('results_autoplay_resume', { section: 'results' })
+  }
+
+  const handleResultsCtaClick = () => {
+    trackEvent('cta_click', { 
+      button: 'results_section', 
+      section: 'results',
+      text: 'Quero Minha Transformação Agora'
+    })
+    onCtaClick()
   }
 
   return (
@@ -359,7 +389,7 @@ export default function Results({ onCtaClick }: ResultsProps) {
             </p>
             
             <Button
-              onClick={onCtaClick}
+              onClick={handleResultsCtaClick}
               size="lg"
               className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 w-full sm:w-auto max-w-sm mx-auto"
             >

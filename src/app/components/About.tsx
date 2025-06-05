@@ -3,8 +3,17 @@
 import { motion } from 'framer-motion'
 import { Award, Users, Heart, Target } from 'lucide-react'
 import Image from 'next/image'
+import { useAptabase } from '@aptabase/react'
+import { useEffect } from 'react'
 
 export default function About() {
+  const { trackEvent } = useAptabase()
+
+  // Track section view when component mounts
+  useEffect(() => {
+    trackEvent('section_view', { section: 'about' })
+  }, [trackEvent])
+
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">

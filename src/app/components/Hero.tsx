@@ -4,19 +4,34 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { ArrowDown, Star } from 'lucide-react'
 import { trackClick } from './FacebookPixel'
+import { useAptabase } from '@aptabase/react'
+import { useEffect } from 'react'
 
 interface HeroProps {
   onCtaClick: () => void
 }
 
 export default function Hero({ onCtaClick }: HeroProps) {
+  const { trackEvent } = useAptabase()
+
+  // Track section view when component mounts
+  useEffect(() => {
+    trackEvent('section_view', { section: 'hero' })
+  }, [trackEvent])
+
   const scrollToFeatures = () => {
+    trackEvent('scroll_to_features', { source: 'hero' })
     const featuresSection = document.getElementById('features')
     featuresSection?.scrollIntoView({ behavior: 'smooth' })
   }
 
   const handleCtaClick = () => {
     trackClick('hero_cta_button')
+    trackEvent('cta_click', { 
+      button: 'hero_main', 
+      section: 'hero',
+      text: 'Quero o Desafio 3.0'
+    })
     onCtaClick()
   }
 

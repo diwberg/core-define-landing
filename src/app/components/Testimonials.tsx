@@ -5,8 +5,9 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { Star, Quote, Eye } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { useAptabase } from '@aptabase/react'
 
 const testimonials = [
   {
@@ -82,14 +83,39 @@ const truncateText = (text: string, maxLength: number = 150) => {
 }
 
 export default function Testimonials({ onCtaClick }: TestimonialsProps) {
+  const { trackEvent } = useAptabase()
   const [currentIndex, setCurrentIndex] = useState(0)
+
+  // Track section view when component mounts
+  useEffect(() => {
+    trackEvent('section_view', { section: 'testimonials' })
+  }, [trackEvent])
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+    trackEvent('testimonial_navigation', { 
+      section: 'testimonials',
+      action: 'next',
+      testimonial_index: (currentIndex + 1) % testimonials.length
+    })
   }
 
   const prevTestimonial = () => {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+    trackEvent('testimonial_navigation', { 
+      section: 'testimonials',
+      action: 'previous',
+      testimonial_index: (currentIndex - 1 + testimonials.length) % testimonials.length
+    })
+  }
+
+  const handleTestimonialCtaClick = () => {
+    trackEvent('cta_click', { 
+      button: 'testimonials_section', 
+      section: 'testimonials',
+      text: 'Garantir Minha Vaga Agora'
+    })
+    onCtaClick()
   }
 
   return (
@@ -195,7 +221,7 @@ export default function Testimonials({ onCtaClick }: TestimonialsProps) {
             </p>
             
             <Button
-              onClick={onCtaClick}
+              onClick={handleTestimonialCtaClick}
               size="lg"
               className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
             >
@@ -215,7 +241,16 @@ export default function Testimonials({ onCtaClick }: TestimonialsProps) {
 }
 
 function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] }) {
+  const { trackEvent } = useAptabase()
   const isLongText = testimonial.text.length > 150
+
+  const handleViewFullTestimonial = () => {
+    trackEvent('testimonial_view_full', { 
+      section: 'testimonials',
+      testimonial_name: testimonial.name,
+      testimonial_age: testimonial.age
+    })
+  }
 
   return (
     <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
@@ -257,6 +292,7 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] 
                   variant="outline" 
                   size="sm"
                   className="text-pink-600 border-pink-200 hover:bg-pink-50 hover:border-pink-300"
+                  onClick={handleViewFullTestimonial}
                 >
                   <Eye className="w-4 h-4 mr-2" />
                   Ver depoimento completo

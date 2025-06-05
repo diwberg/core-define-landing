@@ -6,17 +6,24 @@ import { Badge } from '@/components/ui/badge'
 import { Clock, Gift, Shield, Zap, Star, LucideLink } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { trackClick, trackInitiateCheckout } from './FacebookPixel'
+import { useAptabase } from '@aptabase/react'
 
 interface CTAProps {
   onCtaClick: () => void
 }
 
 export default function CTA({ onCtaClick }: CTAProps) {
+  const { trackEvent } = useAptabase()
   const [timeLeft, setTimeLeft] = useState({
     hours: 0,
     minutes: 0,
     seconds: 0
   })
+
+  // Track section view when component comes into view
+  useEffect(() => {
+    trackEvent('section_view', { section: 'cta' })
+  }, [trackEvent])
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -51,7 +58,20 @@ export default function CTA({ onCtaClick }: CTAProps) {
   const handleCtaClick = () => {
     trackClick('main_cta_button')
     trackInitiateCheckout()
+    trackEvent('cta_click', { 
+      button: 'main_conversion', 
+      section: 'cta',
+      text: 'GARANTIR MINHA TRANSFORMAÇÃO AGORA!',
+      price: 'R$ 97,00'
+    })
     onCtaClick()
+  }
+
+  const handleAffiliateClick = () => {
+    trackEvent('affiliate_link_click', { 
+      section: 'cta',
+      link: '/afiliados'
+    })
   }
 
   return (
@@ -165,7 +185,7 @@ export default function CTA({ onCtaClick }: CTAProps) {
                     Direito ao link de afiliado para comissão nas vendas do produto
                   </p>
                 </div>
-                <a href="/afiliados" className="opacity-80 hover:opacity-100">
+                <a href="/afiliados" onClick={handleAffiliateClick} className="opacity-80 hover:opacity-100">
                 <Button variant="ghost">
                 <LucideLink className="w-5 h-5" />
                 </Button>

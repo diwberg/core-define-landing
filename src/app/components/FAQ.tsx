@@ -8,6 +8,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { HelpCircle } from 'lucide-react'
+import { useAptabase } from '@aptabase/react'
+import { useEffect } from 'react'
 
 const faqs = [
   {
@@ -45,6 +47,28 @@ const faqs = [
 ]
 
 export default function FAQ() {
+  const { trackEvent } = useAptabase()
+
+  // Track section view when component mounts
+  useEffect(() => {
+    trackEvent('section_view', { section: 'faq' })
+  }, [trackEvent])
+
+  const handleQuestionClick = (question: string, index: number) => {
+    trackEvent('faq_question_click', { 
+      section: 'faq',
+      question: question,
+      question_index: index
+    })
+  }
+
+  const handleWhatsAppClick = () => {
+    trackEvent('whatsapp_click', { 
+      section: 'faq',
+      source: 'contact_support'
+    })
+  }
+
   return (
     <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -92,7 +116,10 @@ export default function FAQ() {
                     value={`item-${index}`}
                     className="bg-white rounded-lg shadow-sm border-0 px-6 mb-4"
                   >
-                    <AccordionTrigger className="text-left font-semibold text-gray-900 hover:text-pink-600 transition-colors py-6">
+                    <AccordionTrigger 
+                      className="text-left font-semibold text-gray-900 hover:text-pink-600 transition-colors py-6"
+                      onClick={() => handleQuestionClick(faq.question, index)}
+                    >
                       {faq.question}
                     </AccordionTrigger>
                     <AccordionContent className="text-gray-600 leading-relaxed pb-6">
@@ -123,7 +150,10 @@ export default function FAQ() {
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a href="https://wa.me/5599982602003" target="_blank" rel="noopener noreferrer">
-                  <button className="bg-white text-pink-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                  <button 
+                    className="bg-white text-pink-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+                    onClick={handleWhatsAppClick}
+                  >
                     💬 Falar no WhatsApp
                   </button>
                 </a>

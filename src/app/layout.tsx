@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import FacebookPixel from "./components/FacebookPixel";
-
+import { AptabaseProvider } from '@aptabase/react';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -122,7 +122,9 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} antialiased scroll-smooth`}>
         <FacebookPixel />
-        {children}
+        <AptabaseProvider appKey={process.env.NEXT_PUBLIC_APTA_BASE_ID || ''}>
+          {children}
+        </AptabaseProvider>
       </body>
     </html>
   );

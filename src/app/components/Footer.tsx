@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Facebook, Instagram, MessageCircle, Mail, MapPin, Heart } from 'lucide-react'
+import { useAptabase } from '@aptabase/react'
+import { useEffect } from 'react'
 
 const socialLinks = [
   {
@@ -57,6 +59,30 @@ const footerLinks = [
 ]
 
 export default function Footer() {
+  const { trackEvent } = useAptabase()
+
+  // Track footer view when component mounts
+  useEffect(() => {
+    trackEvent('section_view', { section: 'footer' })
+  }, [trackEvent])
+
+  const handleSocialClick = (socialName: string, href: string) => {
+    trackEvent('social_media_click', { 
+      section: 'footer',
+      platform: socialName.toLowerCase(),
+      url: href
+    })
+  }
+
+  const handleFooterLinkClick = (linkName: string, href: string, category: string) => {
+    trackEvent('footer_link_click', { 
+      section: 'footer',
+      link_name: linkName,
+      link_category: category,
+      url: href
+    })
+  }
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -103,6 +129,7 @@ export default function Footer() {
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.1 }}
+                  onClick={() => handleSocialClick(social.name, social.href)}
                   className={`w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 transition-colors ${social.color}`}
                 >
                   <social.icon className="w-5 h-5" />
@@ -132,6 +159,7 @@ export default function Footer() {
                   >
                     <Link
                       href={link.href}
+                      onClick={() => handleFooterLinkClick(link.name, link.href, section.title)}
                       className="text-gray-400 hover:text-pink-400 transition-colors text-sm"
                     >
                       {link.name}
