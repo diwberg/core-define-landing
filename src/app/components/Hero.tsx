@@ -6,6 +6,7 @@ import { ArrowDown, Star } from 'lucide-react'
 import { trackClick } from './FacebookPixel'
 import { useAptabase } from '@aptabase/react'
 import { useEffect } from 'react'
+import Image from 'next/image'
 
 interface HeroProps {
   onCtaClick: () => void
@@ -166,12 +167,13 @@ export default function Hero({ onCtaClick }: HeroProps) {
                   transition={{ duration: 0.3 }}
                   className="relative"
                 >
-                  <img
+                  <Image
                     src="/hero.png"
                     alt="Transformação Core Define - Antes e Depois"
                     width={450}
                     height={450}
                     className="w-full max-w-md h-auto"
+                    priority
                   />
                 </motion.div>
               </motion.div>
