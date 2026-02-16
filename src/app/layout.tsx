@@ -77,21 +77,21 @@ export default function RootLayout({
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        
+
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        
+
         {/* Theme color for mobile browsers */}
         <meta name="theme-color" content="#ec4899" />
         <meta name="msapplication-TileColor" content="#ec4899" />
-        
+
         {/* Additional meta tags for better SEO */}
         <meta name="format-detection" content="telephone=no" />
         <meta name="geo.region" content="BR" />
         <meta name="geo.country" content="Brazil" />
         <meta name="language" content="Portuguese" />
-        
+
         {/* Schema.org structured data */}
         <script
           type="application/ld+json"
@@ -121,7 +121,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} antialiased scroll-smooth`}>
-        <FacebookPixel />
+        <FacebookPixel pixelId={process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID || ''} />
         <AptabaseProvider appKey={process.env.NEXT_PUBLIC_APTA_BASE_ID || ''}>
           {children}
         </AptabaseProvider>

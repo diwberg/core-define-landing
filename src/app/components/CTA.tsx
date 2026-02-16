@@ -22,7 +22,16 @@ export default function CTA({ onCtaClick }: CTAProps) {
 
   // Track section view when component comes into view
   useEffect(() => {
-    trackEvent('section_view', { section: 'cta' })
+    // Debug: Check if Aptabase is working
+    console.log('🐛 Aptabase Debug - CTA Component:')
+    console.log('- trackEvent function:', typeof trackEvent)
+    
+    try {
+      trackEvent('section_view', { section: 'cta' })
+      console.log('✅ CTA section_view event sent successfully')
+    } catch (error) {
+      console.error('❌ Error sending CTA section_view event:', error)
+    }
   }, [trackEvent])
 
   useEffect(() => {

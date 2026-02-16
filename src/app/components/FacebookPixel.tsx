@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import Script from 'next/script'
 
 // Facebook Pixel ID from environment variables
-const FACEBOOK_PIXEL_ID = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID || ''
+// const FACEBOOK_PIXEL_ID = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID || ''
 
 declare global {
   interface Window {
@@ -13,10 +13,10 @@ declare global {
 }
 
 interface FacebookPixelProps {
-  pixelId?: string
+  pixelId: string
 }
 
-export default function FacebookPixel({ pixelId = FACEBOOK_PIXEL_ID }: FacebookPixelProps) {
+export default function FacebookPixel({ pixelId }: FacebookPixelProps) {
   useEffect(() => {
     // Initialize Facebook Pixel and track PageView
     if (typeof window !== 'undefined' && window.fbq && pixelId) {
@@ -52,9 +52,9 @@ export default function FacebookPixel({ pixelId = FACEBOOK_PIXEL_ID }: FacebookP
         }}
       />
       <noscript>
-        <img 
-          height="1" 
-          width="1" 
+        <img
+          height="1"
+          width="1"
           style={{ display: 'none' }}
           src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`}
           alt=""
@@ -66,14 +66,14 @@ export default function FacebookPixel({ pixelId = FACEBOOK_PIXEL_ID }: FacebookP
 
 // Helper functions to track events
 export const trackEvent = (eventName: string, parameters?: Record<string, unknown>) => {
-  if (typeof window !== 'undefined' && window.fbq && FACEBOOK_PIXEL_ID) {
+  if (typeof window !== 'undefined' && window.fbq) {
     window.fbq('track', eventName, parameters)
     console.log(`Facebook Pixel event tracked: ${eventName}`, parameters)
   }
 }
 
 export const trackCustomEvent = (eventName: string, parameters?: Record<string, unknown>) => {
-  if (typeof window !== 'undefined' && window.fbq && FACEBOOK_PIXEL_ID) {
+  if (typeof window !== 'undefined' && window.fbq) {
     window.fbq('trackCustom', eventName, parameters)
     console.log(`Facebook Pixel custom event tracked: ${eventName}`, parameters)
   }

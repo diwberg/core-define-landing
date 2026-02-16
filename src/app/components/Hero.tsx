@@ -16,7 +16,11 @@ export default function Hero({ onCtaClick }: HeroProps) {
 
   // Track section view when component mounts
   useEffect(() => {
-    trackEvent('section_view', { section: 'hero' })
+    try {
+      trackEvent('section_view', { section: 'hero' })
+    } catch (error) {
+      console.error('❌ Error sending Hero section_view event:', error)
+    }
   }, [trackEvent])
 
   const scrollToFeatures = () => {
@@ -27,8 +31,8 @@ export default function Hero({ onCtaClick }: HeroProps) {
 
   const handleCtaClick = () => {
     trackClick('hero_cta_button')
-    trackEvent('cta_click', { 
-      button: 'hero_main', 
+    trackEvent('cta_click', {
+      button: 'hero_main',
       section: 'hero',
       text: 'Quero o Desafio 3.0'
     })
@@ -39,10 +43,10 @@ export default function Hero({ onCtaClick }: HeroProps) {
     <section className="py-5 relative min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-50 via-white to-purple-50 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-      
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
-          
+
           {/* Content Section */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -94,7 +98,7 @@ export default function Hero({ onCtaClick }: HeroProps) {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="text-lg md:text-xl text-gray-700 mb-8"
             >
-              Resultados visíveis ou seu dinheiro de volta. 
+              Resultados visíveis ou seu dinheiro de volta.
               <br />
               <span className="font-semibold text-pink-600">Garantia de satisfação de 7 dias!</span>
             </motion.p>
@@ -113,7 +117,7 @@ export default function Hero({ onCtaClick }: HeroProps) {
               >
                 Quero o Desafio 3.0
               </Button>
-              
+
               <p className="text-sm text-gray-500 text-center">
                 ⚡ Vagas limitadas - Início em 09/06/2025
               </p>
@@ -147,10 +151,10 @@ export default function Hero({ onCtaClick }: HeroProps) {
             <div className="relative flex justify-center lg:justify-end">
               {/* Main Image with animations */}
               <motion.div
-                animate={{ 
+                animate={{
                   y: [-10, 10, -10],
                 }}
-                transition={{ 
+                transition={{
                   duration: 6,
                   repeat: Infinity,
                   ease: "easeInOut"
@@ -174,23 +178,23 @@ export default function Hero({ onCtaClick }: HeroProps) {
 
               {/* Floating elements around the image */}
               <motion.div
-                animate={{ 
+                animate={{
                   rotate: 360,
                   scale: [1, 1.1, 1]
                 }}
-                transition={{ 
+                transition={{
                   rotate: { duration: 20, repeat: Infinity, ease: "linear" },
                   scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
                 }}
                 className="absolute -top-6 -right-6 w-20 h-20 bg-gradient-to-r from-pink-400 to-pink-600 rounded-full opacity-80 shadow-lg hidden lg:block"
               />
-              
+
               <motion.div
-                animate={{ 
+                animate={{
                   rotate: -360,
                   scale: [1, 1.2, 1]
                 }}
-                transition={{ 
+                transition={{
                   rotate: { duration: 25, repeat: Infinity, ease: "linear" },
                   scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }
                 }}
@@ -199,11 +203,11 @@ export default function Hero({ onCtaClick }: HeroProps) {
 
               {/* Sparkle effects */}
               <motion.div
-                animate={{ 
+                animate={{
                   scale: [0, 1, 0],
                   rotate: [0, 180, 360]
                 }}
-                transition={{ 
+                transition={{
                   duration: 3,
                   repeat: Infinity,
                   delay: 0.5
@@ -214,11 +218,11 @@ export default function Hero({ onCtaClick }: HeroProps) {
               </motion.div>
 
               <motion.div
-                animate={{ 
+                animate={{
                   scale: [0, 1, 0],
                   rotate: [360, 180, 0]
                 }}
-                transition={{ 
+                transition={{
                   duration: 4,
                   repeat: Infinity,
                   delay: 1.5
