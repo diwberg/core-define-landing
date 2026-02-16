@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Facebook, Instagram, MessageCircle, Mail, MapPin, Heart } from 'lucide-react'
 import { useAptabase } from '@aptabase/react'
 import { useEffect } from 'react'
+import { WHATSAPP_NUMBER } from '@/constants'
 
 const socialLinks = [
   {
@@ -22,7 +23,7 @@ const socialLinks = [
   {
     name: 'WhatsApp',
     icon: MessageCircle,
-    href: 'https://wa.me/5599982602003',
+    href: `https://wa.me/${WHATSAPP_NUMBER}`,
     color: 'hover:text-green-600'
   }
 ]
@@ -52,7 +53,7 @@ const footerLinks = [
     links: [
       { name: 'Central de Ajuda', href: '/#faq' },
       { name: 'Contato', href: 'mailto:contato@cuidandodemim.org' },
-      { name: 'WhatsApp', href: 'https://wa.me/5599982602003' },
+      { name: 'WhatsApp', href: `https://wa.me/${WHATSAPP_NUMBER}` },
       { name: 'Área do Aluno', href: 'https://hotmart.com/pt-br/club/cuidandodemim' }
     ]
   }
@@ -67,7 +68,7 @@ export default function Footer() {
   }, [trackEvent])
 
   const handleSocialClick = (socialName: string, href: string) => {
-    trackEvent('social_media_click', { 
+    trackEvent('social_media_click', {
       section: 'footer',
       platform: socialName.toLowerCase(),
       url: href
@@ -75,7 +76,7 @@ export default function Footer() {
   }
 
   const handleFooterLinkClick = (linkName: string, href: string, category: string) => {
-    trackEvent('footer_link_click', { 
+    trackEvent('footer_link_click', {
       section: 'footer',
       link_name: linkName,
       link_category: category,
@@ -87,7 +88,7 @@ export default function Footer() {
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          
+
           {/* Brand Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -104,7 +105,7 @@ export default function Footer() {
                 Transformando vidas através do fortalecimento do core
               </p>
             </div>
-            
+
             <div className="space-y-3 text-gray-400">
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-pink-400" />
@@ -115,7 +116,7 @@ export default function Footer() {
                 <span className="text-sm">Brasil</span>
               </div>
             </div>
-            
+
             {/* Social Media */}
             <div className="flex gap-4 mt-6">
               {socialLinks.map((social, index) => (
@@ -187,7 +188,7 @@ export default function Footer() {
               <h4 className="font-bold text-lg">Garantia de 7 Dias</h4>
             </div>
             <p className="text-gray-300 text-center text-sm">
-              Experimente o Core Define 3.0 por 7 dias. Se não ficar satisfeita, 
+              Experimente o Core Define 3.0 por 7 dias. Se não ficar satisfeita,
               devolvemos 100% do seu dinheiro, sem perguntas!
             </p>
           </div>
@@ -205,17 +206,17 @@ export default function Footer() {
             <div className="text-gray-400 text-sm text-center md:text-left">
               <p>© 2025 Cuidando de Mim. Todos os direitos reservados.</p>
             </div>
-            
+
             <div className="flex items-center gap-2 text-gray-400 text-sm">
               <span>Feito com</span>
               <Heart className="w-4 h-4 text-pink-400 fill-current" />
               <span>para mulheres incríveis</span>
             </div>
           </div>
-          
+
           <div className="mt-6 text-center">
             <p className="text-xs text-gray-300">
-              Este produto não substitui o acompanhamento médico. Consulte sempre um profissional de saúde 
+              Este produto não substitui o acompanhamento médico. Consulte sempre um profissional de saúde
               antes de iniciar qualquer programa de exercícios.
             </p>
           </div>

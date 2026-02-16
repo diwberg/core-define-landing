@@ -10,6 +10,7 @@ import {
 import { HelpCircle } from 'lucide-react'
 import { useAptabase } from '@aptabase/react'
 import { useEffect } from 'react'
+import { WHATSAPP_NUMBER } from '@/constants'
 
 const faqs = [
   {
@@ -55,7 +56,7 @@ export default function FAQ() {
   }, [trackEvent])
 
   const handleQuestionClick = (question: string, index: number) => {
-    trackEvent('faq_question_click', { 
+    trackEvent('faq_question_click', {
       section: 'faq',
       question: question,
       question_index: index
@@ -63,7 +64,7 @@ export default function FAQ() {
   }
 
   const handleWhatsAppClick = () => {
-    trackEvent('whatsapp_click', { 
+    trackEvent('whatsapp_click', {
       section: 'faq',
       source: 'contact_support'
     })
@@ -83,14 +84,14 @@ export default function FAQ() {
             <HelpCircle className="w-4 h-4" />
             Perguntas Frequentes
           </div>
-          
+
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Tire suas{' '}
             <span className="bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
               Dúvidas
             </span>
           </h2>
-          
+
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Respondemos as principais perguntas que as mulheres fazem sobre o Core Define 3.0
           </p>
@@ -112,11 +113,11 @@ export default function FAQ() {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <AccordionItem 
+                  <AccordionItem
                     value={`item-${index}`}
                     className="bg-white rounded-lg shadow-sm border-0 px-6 mb-4"
                   >
-                    <AccordionTrigger 
+                    <AccordionTrigger
                       className="text-left font-semibold text-gray-900 hover:text-pink-600 transition-colors py-6"
                       onClick={() => handleQuestionClick(faq.question, index)}
                     >
@@ -144,13 +145,13 @@ export default function FAQ() {
                 Ainda tem dúvidas?
               </h3>
               <p className="text-lg opacity-90 mb-6 max-w-2xl mx-auto">
-                Nossa equipe está pronta para te ajudar! Entre em contato conosco pelo WhatsApp 
+                Nossa equipe está pronta para te ajudar! Entre em contato conosco pelo WhatsApp
                 e tire todas as suas dúvidas antes de começar sua transformação.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="https://wa.me/5599982602003" target="_blank" rel="noopener noreferrer">
-                  <button 
+                <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer">
+                  <button
                     className="bg-white text-pink-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
                     onClick={handleWhatsAppClick}
                   >
